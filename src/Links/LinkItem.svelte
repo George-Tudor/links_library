@@ -17,10 +17,14 @@
         <img src="{imageUrl}" alt="{title} picture">
     </div>
     <div class="content">
-        <h3>Notes</h3>
-        <p>{userNotes}</p>
-        <h3>Tags</h3>
-        <p>{tags}</p>
+        {#if userNotes !== undefined}
+            <h3>Notes</h3>
+            <p>{userNotes}</p>
+        {/if}
+        {#if tags !== undefined}
+            <h3>Tags</h3>
+            <p>{tags}</p>
+        {/if}
     </div>
     <footer>
         <button>Add Tag</button>

@@ -67,9 +67,49 @@ let links = [
     }
 ]
 
+function addLink() {
+    const newLink = {
+        id: Math.random.toString(),
+        title: title,
+        url: url,
+        description: description,
+        imageUrl: imageUrl,
+        userNotes: userNotes,
+        tags: tags
+    };
+    links = [newLink, ...links];
+}
+
 </script>
 
 <main>
+    <form on:submit|preventDefault={addLink}>
+        <div class="form-control">
+            <label for="title">Title</label>
+            <input type="text" id="title" bind:value={title}>
+        </div>
+        <div class="form-control">
+            <label for="url">Url</label>
+            <input type="text" id="url" bind:value={url}>
+        </div>
+        <div class="form-control">
+            <label for="description">Description</label>
+            <input type="text" id="description" bind:value={description}>
+        </div>
+        <div class="form-control">
+            <label for="imageUrl">ImageURL</label>
+            <input type="text" id="imageUrl" bind:value={imageUrl}>
+        </div>
+        <div class="form-control">
+            <label for="userNotes">User Notes</label>
+            <input type="text" id="userNotes" bind:value={userNotes}>
+        </div>
+        <div class="form-control">
+            <label for="tags">Tags</label>
+            <input type="text" id="tags" bind:value={tags}>
+        </div>
+        <button type="submit">Save</button>
+    </form>
 
     <Header />
     <LinkGrid {links}/>
