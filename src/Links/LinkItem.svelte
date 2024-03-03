@@ -8,6 +8,7 @@
 </script>
 
 <article>
+    <button class="close-btn">&times;</button>
     <header>
         <h1>{title}</h1>
         <h2>{description}</h2>
@@ -38,6 +39,7 @@
         border-radius: 5px;
         background: white;
         margin: 1rem;
+        position: relative;
     }
 
     header,
@@ -45,6 +47,18 @@
     footer {
         padding: 1rem;
     }
+
+    .close-btn {
+        font-size: 16px; /* Size of the X */
+        color: black; /* Color of the X */
+        background-color: white; /* Background color of the button */
+        cursor: pointer;
+        padding: 3px 6px; /* Adjust padding to change the size of the box */
+        border-radius: 2px; /* Optional: adds rounded corners */
+        position: absolute;
+        right: 0;
+    }
+
 
     .image {
         width: 100%;
