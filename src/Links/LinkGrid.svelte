@@ -1,20 +1,15 @@
 <script>
 
     import LinkItem from "./LinkItem.svelte";
+    import {createEventDispatcher} from "svelte";
 
     export let links;
+    const dispatch = createEventDispatcher();
 </script>
 
 <section id="links">
     {#each links as link}
-        <LinkItem
-                title={link.title}
-                description={link.description}
-                url={link.url}
-                imageUrl={link.imageUrl}
-                notes={link.notes}
-                tags={link.tags}
-            />
+        <LinkItem on:delete={event => dispatch("delete", event.detail)} link={link}/>
     {/each}
 </section>
 
