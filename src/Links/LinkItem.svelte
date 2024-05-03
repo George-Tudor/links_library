@@ -1,30 +1,29 @@
 <script>
-    export let title;
-    export let description;
-    export let url;
-    export let imageUrl;
-    export let userNotes;
-    export let tags;
+    import {createEventDispatcher} from "svelte";
+
+    export let link;
+    const dispatch = createEventDispatcher();
+
 </script>
 
 <article>
-    <button class="close-btn">&times;</button>
+    <button class="close-btn" on:click={() => dispatch("delete", link)}>&times;</button>
     <header>
-        <h1>{title}</h1>
-        <h2>{description}</h2>
-        <h3>{url}</h3>
+        <h1>{link.title}</h1>
+        <h2>{link.description}</h2>
+        <h3>{link.url}</h3>
     </header>
     <div class="image">
-        <img src="{imageUrl}" alt="{title} picture">
+        <img src="{link.imageUrl}" alt="{link.title} picture">
     </div>
     <div class="content">
-        {#if userNotes !== undefined}
+        {#if link.userNotes !== undefined}
             <h3>Notes</h3>
-            <p>{userNotes}</p>
+            <p>{link.userNotes}</p>
         {/if}
-        {#if tags !== undefined}
+        {#if link.tags !== undefined}
             <h3>Tags</h3>
-            <p>{tags}</p>
+            <p>{link.tags}</p>
         {/if}
     </div>
     <footer>
@@ -49,12 +48,12 @@
     }
 
     .close-btn {
-        font-size: 16px; /* Size of the X */
-        color: black; /* Color of the X */
-        background-color: white; /* Background color of the button */
+        font-size: 16px;
+        color: black;
+        background-color: white;
         cursor: pointer;
-        padding: 3px 6px; /* Adjust padding to change the size of the box */
-        border-radius: 2px; /* Optional: adds rounded corners */
+        padding: 3px 6px;
+        border-radius: 2px;
         position: absolute;
         right: 0;
     }

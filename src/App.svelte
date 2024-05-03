@@ -1,6 +1,5 @@
 <script>
 import Header from "./UI/Header.svelte";
-import LinkItem from "./Links/LinkItem.svelte";
 import LinkGrid from "./Links/LinkGrid.svelte";
 
 let title = "";
@@ -80,7 +79,12 @@ function addLink() {
     links = [newLink, ...links];
 }
 
+function deleteLink(deletedLink) {
+    links = links.filter(link => link.id !== deletedLink.id);
+}
+
 </script>
+
 
 <main>
     <form on:submit|preventDefault={addLink}>
@@ -112,8 +116,7 @@ function addLink() {
     </form>
 
     <Header />
-    <LinkGrid {links}/>
-
+    <LinkGrid on:delete={event => deleteLink(event.detail)} {links}/>
 </main>
 
 <style>
